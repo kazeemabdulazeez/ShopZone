@@ -1,0 +1,405 @@
+/*==================================================
+                LARGE TABLETS
+==================================================*/
+
+@media (max-width:1200px){
+
+    .container{
+
+        width:95%;
+
+    }
+
+    .products-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    .category-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    .features-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+/*==================================================
+                TABLETS
+==================================================*/
+
+@media (max-width:992px){
+
+    .hero-container{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+    }
+
+    .hero-image{
+
+        order:-1;
+
+    }
+
+    .products-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .product-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .cart-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .checkout-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .profile-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .shop-toolbar{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+    .section-header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+}
+
+
+/*==================================================
+                MOBILE MENU
+==================================================*/
+
+@media (max-width:900px){
+
+    #navbar{
+
+        display:none;
+
+    }
+
+    .search-box{
+
+        display:none;
+
+    }
+
+    .menu-toggle{
+
+        display:block;
+
+    }
+
+}
+
+/*==================================================
+                    MOBILE
+==================================================*/
+
+@media (max-width:768px){
+
+    section{
+
+        padding:60px 0;
+
+    }
+
+    .hero-content h1{
+
+        font-size:2.2rem;
+
+    }
+
+    .page-header{
+
+        padding:70px 0;
+
+    }
+
+    .page-header h1{
+
+        font-size:2.3rem;
+
+    }
+
+    .products-grid{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:20px;
+
+    }
+
+    .category-grid{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .features-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .social-links{
+
+        justify-content:center;
+
+    }
+
+    .newsletter-form{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .newsletter-form input{
+
+        width:100%;
+
+    }
+
+    .form-row{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .countdown{
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+    }
+
+}
+
+
+/*==================================================
+                SMALL MOBILE
+==================================================*/
+
+@media (max-width:576px){
+
+    .container{
+
+        width:94%;
+
+    }
+
+    .hero{
+
+        padding:50px 0;
+
+    }
+
+    .hero-content h1{
+
+        font-size:1.9rem;
+
+    }
+
+    .hero-content p{
+
+        font-size:.95rem;
+
+    }
+
+    .products-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .category-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .logo span{
+
+        font-size:1.3rem;
+
+    }
+
+    .logo img{
+
+        width:40px;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .product-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .header-icons{
+
+        gap:15px;
+
+    }
+
+    .cart-item{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .cart-item img{
+
+        width:160px;
+
+        height:160px;
+
+    }
+
+    .profile-sidebar{
+
+        text-align:center;
+
+    }
+
+    .profile-menu a,
+
+    .profile-menu button{
+
+        justify-content:center;
+
+    }
+
+    .product-info h1{
+
+        font-size:2rem;
+
+    }
+
+    .main-image img{
+
+        height:320px;
+
+    }
+
+}
+
+
+/*==================================================
+                EXTRA SMALL
+==================================================*/
+
+@media (max-width:400px){
+
+    html{
+
+        font-size:14px;
+
+    }
+
+    .page-header h1{
+
+        font-size:2rem;
+
+    }
+
+    .hero-content h1{
+
+        font-size:1.7rem;
+
+    }
+
+    .time-box{
+
+        min-width:65px;
+
+        padding:12px;
+
+    }
+
+    #backToTop{
+
+        width:45px;
+
+        height:45px;
+
+        right:15px;
+
+        bottom:15px;
+
+    }
+
+}

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="My Profile | ShopZone">
+
+    <title>My Profile | ShopZone</title>
+
+    <link rel="icon"
+        href="images/logo.png">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="css/style.css">
+
+    <link rel="stylesheet"
+        href="css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- ===========================
+            TOP BAR
+    ============================ -->
+
+    <section class="top-bar">
+
+        <div class="container">
+
+            <div class="top-bar-left">
+
+                <p>
+
+                    🚚 Free Shipping On Orders Above $500
+
+                </p>
+
+            </div>
+
+            <div class="top-bar-right">
+
+                <a href="profile.html">
+
+                    My Account
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===========================
+            HEADER
+    ============================ -->
+
+    <header id="mainHeader">
+
+        <div class="container">
+
+            <a href="index.html"
+                class="logo">
+
+                <img src="images/logo.png"
+                    alt="ShopZone Logo">
+
+                <span>ShopZone</span>
+
+            </a>
+
+            <nav id="navbar">
+
+                <ul class="nav-links">
+
+                    <li><a href="index.html">Home</a></li>
+
+                    <li><a href="products.html">Products</a></li>
+
+                    <li><a href="wishlist.html">Wishlist</a></li>
+
+                    <li><a href="cart.html">Cart</a></li>
+
+                    <li><a class="active"
+                            href="profile.html">Profile</a></li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ===========================
+            PAGE HEADER
+    ============================ -->
+
+    <section class="page-header">
+
+        <div class="container">
+
+            <h1>
+
+                My Profile
+
+            </h1>
+
+            <p>
+
+                Manage your ShopZone account.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ===========================
+            PROFILE
+    ============================ -->
+
+    <section class="profile-page">
+
+        <div class="container profile-layout">
+
+            <!-- Sidebar -->
+
+            <aside class="profile-sidebar">
+
+                <div class="profile-avatar">
+
+                    <i class="fas fa-user-circle"></i>
+
+                    <h2 id="profileName">
+
+                        User Name
+
+                    </h2>
+
+                    <p id="profileEmail">
+
+                        user@email.com
+
+                    </p>
+
+                </div>
+
+                <ul class="profile-menu">
+
+                    <li>
+
+                        <a class="active"
+                            href="#account">
+
+                            <i class="fas fa-user"></i>
+
+                            Account
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#orders">
+
+                            <i class="fas fa-box"></i>
+
+                            My Orders
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="wishlist.html">
+
+                            <i class="fas fa-heart"></i>
+
+                            Wishlist
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="cart.html">
+
+                            <i class="fas fa-cart-shopping"></i>
+
+                            Cart
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <button
+                            id="logoutBtn">
+
+                            <i class="fas fa-right-from-bracket"></i>
+
+                            Logout
+
+                        </button>
+
+                    </li>
+
+                </ul>
+
+            </aside>
+
+            <!-- Content -->
+
+            <div class="profile-content">
+
+                <section
+                    id="account">
+
+                    <h2>
+
+                        Account Information
+
+                    </h2>
+
+                    <form
+                        id="profileForm">
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Full Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="editName">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Email Address
+
+                            </label>
+
+                            <input
+                                type="email"
+                                id="editEmail">
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Save Changes
+
+                        </button>
+
+                    </form>
+
+                </section>
+
+                <section
+                    id="orders">
+
+                    <h2>
+
+                        Order History
+
+                    </h2>
+
+                    <div id="ordersContainer">
+
+                        <!-- Loaded by checkout.js -->
+
+                    </div>
+
+                </section>
+
+                            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===========================
+            NEWSLETTER
+    ============================ -->
+
+    <section class="newsletter">
+
+        <div class="container">
+
+            <div class="newsletter-content">
+
+                <h2>
+
+                    Subscribe To Our Newsletter
+
+                </h2>
+
+                <p>
+
+                    Get exclusive offers, product updates
+                    and the latest arrivals.
+
+                </p>
+
+                <form
+                    id="newsletterForm"
+                    class="newsletter-form">
+
+                    <input
+                        type="email"
+                        placeholder="Enter your email address"
+                        required>
+
+                    <button
+                        type="submit">
+
+                        Subscribe
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===========================
+            FOOTER
+    ============================ -->
+
+    <footer id="mainFooter">
+
+        <div class="container footer-grid">
+
+            <div class="footer-about">
+
+                <a
+                    href="index.html"
+                    class="footer-logo">
+
+                    <img
+                        src="images/logo.png"
+                        alt="ShopZone Logo">
+
+                    <span>
+
+                        ShopZone
+
+                    </span>
+
+                </a>
+
+                <p>
+
+                    ShopZone provides premium electronics,
+                    gaming devices, smartphones,
+                    laptops and accessories.
+
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>
+
+                    Quick Links
+
+                </h3>
+
+                <ul>
+
+                    <li><a href="index.html">Home</a></li>
+
+                    <li><a href="products.html">Products</a></li>
+
+                    <li><a href="wishlist.html">Wishlist</a></li>
+
+                    <li><a href="cart.html">Cart</a></li>
+
+                    <li><a href="profile.html">Profile</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>
+
+                    Categories
+
+                </h3>
+
+                <ul>
+
+                    <li><a href="products.html?category=smartphones">Smartphones</a></li>
+
+                    <li><a href="products.html?category=laptops">Laptops</a></li>
+
+                    <li><a href="products.html?category=gaming">Gaming</a></li>
+
+                    <li><a href="products.html?category=audio">Audio</a></li>
+
+                    <li><a href="products.html?category=accessories">Accessories</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h3>
+
+                    Contact Us
+
+                </h3>
+
+                <p>
+
+                    <i class="fas fa-envelope"></i>
+
+                    support@shopzone.com
+
+                </p>
+
+                <p>
+
+                    <i class="fas fa-phone"></i>
+
+                    +1 (800) 555-1234
+
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+
+                &copy; 2026 ShopZone Designed and Developed by Kazeem Abdulazeez. All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- ===========================
+            BACK TO TOP
+    ============================ -->
+
+    <button
+        id="backToTop"
+        title="Back To Top">
+
+        <i class="fas fa-arrow-up"></i>
+
+    </button>
+
+    <!-- ===========================
+            JAVASCRIPT
+    ============================ -->
+
+    <script src="js/auth.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="ShopZone Admin Dashboard">
+
+    <title>Admin Dashboard | ShopZone</title>
+
+    <link rel="icon"
+        href="images/logo.png">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="css/style.css">
+
+    <link rel="stylesheet"
+        href="css/admin.css">
+
+</head>
+
+<body>
+
+    <!-- ===========================
+            ADMIN HEADER
+    ============================ -->
+
+    <header class="admin-header">
+
+        <div class="container">
+
+            <div class="admin-logo">
+
+                <img
+                    src="images/logo.png"
+                    alt="ShopZone Logo">
+
+                <h2>
+
+                    ShopZone Admin
+
+                </h2>
+
+            </div>
+
+            <div class="admin-actions">
+
+                <a
+                    href="index.html"
+                    class="btn">
+
+                    View Store
+
+                </a>
+
+                <button
+                    id="adminLogout"
+                    class="btn btn-danger">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ===========================
+            ADMIN DASHBOARD
+    ============================ -->
+
+    <section class="admin-dashboard">
+
+        <div class="container admin-layout">
+
+            <!-- Sidebar -->
+
+            <aside class="admin-sidebar">
+
+                <ul>
+
+                    <li>
+
+                        <a
+                            class="active"
+                            href="#dashboard">
+
+                            <i class="fas fa-chart-line"></i>
+
+                            Dashboard
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#products">
+
+                            <i class="fas fa-box"></i>
+
+                            Products
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#orders">
+
+                            <i class="fas fa-cart-shopping"></i>
+
+                            Orders
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#customers">
+
+                            <i class="fas fa-users"></i>
+
+                            Customers
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#settings">
+
+                            <i class="fas fa-gear"></i>
+
+                            Settings
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </aside>
+
+            <!-- Main Content -->
+
+            <main class="admin-content">
+
+                <section id="dashboard">
+
+                    <h1>
+
+                        Dashboard
+
+                    </h1>
+
+                    <div class="dashboard-cards">
+
+                        <div class="dashboard-card">
+
+                            <h3>Total Products</h3>
+
+                            <h2 id="totalProducts">
+
+                                40
+
+                            </h2>
+
+                        </div>
+
+                        <div class="dashboard-card">
+
+                            <h3>Total Orders</h3>
+
+                            <h2 id="totalOrders">
+
+                                0
+
+                            </h2>
+
+                        </div>
+
+                        <div class="dashboard-card">
+
+                            <h3>Customers</h3>
+
+                            <h2 id="totalCustomers">
+
+                                0
+
+                            </h2>
+
+                        </div>
+
+                        <div class="dashboard-card">
+
+                            <h3>Revenue</h3>
+
+                            <h2 id="totalRevenue">
+
+                                $0
+
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Products -->
+
+                <section id="products">
+
+                    <div class="section-title">
+
+                        <h2>
+
+                            Manage Products
+
+                        </h2>
+
+                        <button
+                            id="addProductBtn"
+                            class="btn btn-primary">
+
+                            Add Product
+
+                        </button>
+
+                    </div>
+
+                    <div id="adminProducts">
+
+                        <!-- admin.js loads products -->
+
+                    </div>
+
+                </section>
+
+                <!-- Orders -->
+
+                <section id="orders">
+
+                    <h2>
+
+                        Recent Orders
+
+                    </h2>
+
+                    <div id="adminOrders">
+
+                        <!-- admin.js -->
+
+                    </div>
+
+                </section>
+
+                                <!-- ===========================
+                        CUSTOMERS
+                ============================ -->
+
+                <section id="customers">
+
+                    <h2>
+
+                        Customers
+
+                    </h2>
+
+                    <div id="adminCustomers">
+
+                        <!-- Loaded by admin.js -->
+
+                    </div>
+
+                </section>
+
+                <!-- ===========================
+                        SETTINGS
+                ============================ -->
+
+                <section id="settings">
+
+                    <h2>
+
+                        Store Settings
+
+                    </h2>
+
+                    <form id="settingsForm">
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Store Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="storeName"
+                                value="ShopZone">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Support Email
+
+                            </label>
+
+                            <input
+                                type="email"
+                                id="supportEmail"
+                                value="support@shopzone.com">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+
+                                Contact Number
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="supportPhone"
+                                value="+234 (705) 827-4305">
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            Save Settings
+
+                        </button>
+
+                    </form>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </section>
+
+    <!-- ===========================
+            ADMIN FOOTER
+    ============================ -->
+
+    <footer class="admin-footer">
+
+        <div class="container">
+
+            <p>
+
+                &copy; 2026 ShopZone  Designed and Developed by Kazeem Abdulazeez Admin Dashboard.
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- ===========================
+            JAVASCRIPT
+    ============================ -->
+
+    <script src="js/products.js"></script>
+
+    <script src="js/cart.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/checkout.js"></script>
+
+    <script src="js/admin.js"></script>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
