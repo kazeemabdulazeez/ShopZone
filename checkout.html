@@ -11,6 +11,9 @@
     <meta name="description"
         content="Checkout | ShopZone">
 
+    <meta name="theme-color"
+        content="#fcfcfa">
+
     <title>Checkout | ShopZone</title>
 
     <link rel="icon"
@@ -25,7 +28,7 @@
         href="https://fonts.gstatic.com"
         crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..800&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -41,9 +44,20 @@
     <link rel="stylesheet"
         href="css/responsive.css">
 
+    <!-- Theme is applied before paint to avoid a flash -->
+
+    <script src="js/ui.js"></script>
+
 </head>
 
 <body>
+
+    <a href="#mainContent"
+        class="skip-link">
+
+        Skip to content
+
+    </a>
 
     <!-- ===========================
             TOP BAR
@@ -55,7 +69,7 @@
 
             <div class="top-bar-left">
 
-                <p>🚚 Free Shipping On Orders Above $500</p>
+                <p>Complimentary shipping on orders above $500</p>
 
             </div>
 
@@ -91,21 +105,32 @@
             </a>
 
             <form id="searchForm"
-                class="search-box">
+                class="search-box"
+                role="search">
+
+                <label for="searchInput"
+                    class="sr-only">
+
+                    Search products
+
+                </label>
 
                 <input
                     type="search"
+                    id="searchInput"
                     placeholder="Search products...">
 
-                <button>
+                <button type="submit"
+                    aria-label="Search">
 
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search" aria-hidden="true"></i>
 
                 </button>
 
             </form>
 
-            <nav id="navbar">
+            <nav id="navbar"
+                aria-label="Primary">
 
                 <ul class="nav-links">
 
@@ -125,24 +150,38 @@
 
             <div class="header-icons">
 
-                <a href="profile.html">
+                <button class="icon-btn theme-toggle"
+                    type="button"
+                    aria-pressed="false"
+                    aria-label="Switch to dark theme">
 
-                    <i class="far fa-user"></i>
+                    <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+
+                    <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+
+                </button>
+
+                <a href="profile.html"
+                    aria-label="My account">
+
+                    <i class="far fa-user" aria-hidden="true"></i>
 
                 </a>
 
-                <a href="wishlist.html">
+                <a href="wishlist.html"
+                    aria-label="Wishlist">
 
-                    <i class="far fa-heart"></i>
+                    <i class="far fa-heart" aria-hidden="true"></i>
 
                     <span id="wishlistCount">0</span>
 
                 </a>
 
                 <a href="cart.html"
-                    class="cart-icon">
+                    class="cart-icon"
+                    aria-label="Cart">
 
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
 
                     <span id="cartCount">0</span>
 
@@ -150,9 +189,87 @@
 
             </div>
 
+            <button class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+                aria-label="Open menu">
+
+                <span class="bars" aria-hidden="true">
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                </span>
+
+            </button>
+
         </div>
 
     </header>
+
+    <!-- ===========================
+            MOBILE MENU
+    ============================ -->
+
+    <aside class="mobile-menu"
+        id="mobileMenu"
+        aria-label="Mobile navigation">
+
+        <button class="drawer-close"
+            type="button"
+            aria-label="Close menu">
+
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+
+        </button>
+
+        <a href="index.html">
+
+            <i class="fas fa-house" aria-hidden="true"></i>
+
+            Home
+
+        </a>
+
+        <a href="products.html">
+
+            <i class="fas fa-grip" aria-hidden="true"></i>
+
+            Products
+
+        </a>
+
+        <a href="wishlist.html">
+
+            <i class="far fa-heart" aria-hidden="true"></i>
+
+            Wishlist
+
+        </a>
+
+        <a href="cart.html">
+
+            <i class="fas fa-bag-shopping" aria-hidden="true"></i>
+
+            Cart
+
+        </a>
+
+        <a href="profile.html">
+
+            <i class="far fa-user" aria-hidden="true"></i>
+
+            Profile
+
+        </a>
+
+    </aside>
+
+    <main id="mainContent">
 
     <!-- ===========================
             PAGE HEADER
@@ -161,6 +278,8 @@
     <section class="page-header">
 
         <div class="container">
+
+            <span class="eyebrow">Final step</span>
 
             <h1>
 
@@ -188,7 +307,7 @@
 
             <!-- Customer Details -->
 
-            <div class="checkout-form">
+            <div class="checkout-form" data-reveal>
 
                 <h2>
 
@@ -200,7 +319,7 @@
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="fullName">
 
                             Full Name
 
@@ -215,7 +334,7 @@
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="email">
 
                             Email Address
 
@@ -230,7 +349,7 @@
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="phone">
 
                             Phone Number
 
@@ -245,7 +364,7 @@
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="address">
 
                             Address
 
@@ -262,7 +381,7 @@
 
                         <div class="form-group">
 
-                            <label>
+                            <label for="city">
 
                                 City
 
@@ -277,7 +396,7 @@
 
                         <div class="form-group">
 
-                            <label>
+                            <label for="country">
 
                                 Country
 
@@ -344,7 +463,7 @@
                     ORDER SUMMARY
             ============================ -->
 
-            <aside class="order-summary">
+            <aside class="order-summary" data-reveal>
 
                 <h2>
 
@@ -428,9 +547,11 @@
 
                 <button
                     id="placeOrderBtn"
-                    class="btn btn-primary">
+                    type="button"
+                    class="btn btn-primary btn-lg"
+                    data-magnetic>
 
-                    <i class="fas fa-lock"></i>
+                    <i class="fas fa-lock" aria-hidden="true"></i>
 
                     Place Order
 
@@ -450,7 +571,7 @@
 
         <div class="container">
 
-            <div class="newsletter-content">
+            <div class="newsletter-content" data-reveal>
 
                 <h2>
 
@@ -469,9 +590,17 @@
                     id="newsletterForm"
                     class="newsletter-form">
 
+                    <label for="newsletterEmail"
+                        class="sr-only">
+
+                            Email address
+
+                    </label>
+
                     <input
                         type="email"
-                        placeholder="Enter your email"
+                        id="newsletterEmail"
+                        placeholder="Enter your email address"
                         required>
 
                     <button type="submit">
@@ -482,11 +611,19 @@
 
                 </form>
 
+                <p class="fineprint">
+
+                    No spam. Unsubscribe at any time.
+
+                </p>
+
             </div>
 
         </div>
 
     </section>
+
+    </main>
 
     <!-- ===========================
             FOOTER
@@ -580,7 +717,7 @@
 
                 <p>
 
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
 
                     support@shopzone.com
 
@@ -588,7 +725,7 @@
 
                 <p>
 
-                    <i class="fas fa-phone"></i>
+                    <i class="fas fa-phone" aria-hidden="true"></i>
 
                     +234 (705) 827-4305
 
@@ -596,13 +733,13 @@
 
                 <div class="social-links">
 
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
 
                 </div>
 
@@ -627,9 +764,11 @@
 
     <button
         id="backToTop"
-        title="Back To Top">
+        title="Back To Top"
+        type="button"
+        aria-label="Back to top">
 
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
 
     </button>
 

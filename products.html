@@ -21,6 +21,9 @@
     <meta name="author"
         content="ShopZone">
 
+    <meta name="theme-color"
+        content="#fcfcfa">
+
     <title>
 
         Products | ShopZone
@@ -45,7 +48,7 @@
         href="https://fonts.gstatic.com"
         crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..800&display=swap"
         rel="stylesheet">
 
     <!-- ===========================
@@ -65,9 +68,18 @@
     <link rel="stylesheet"
         href="css/responsive.css">
 
+    <script src="js/ui.js"></script>
+
 </head>
 
 <body>
+
+    <a href="#mainContent"
+        class="skip-link">
+
+        Skip to content
+
+    </a>
 
     <!-- ===========================
             TOP BAR
@@ -81,7 +93,7 @@
 
                 <p>
 
-                    🚚 Free Shipping On Orders Above $500
+                    Complimentary shipping on orders above $500
 
                 </p>
 
@@ -120,22 +132,32 @@
             </a>
 
             <form id="searchForm"
-                class="search-box">
+                class="search-box"
+                role="search">
+
+                <label for="productSearch"
+                    class="sr-only">
+
+                    Search products
+
+                </label>
 
                 <input
                     type="search"
                     id="productSearch"
                     placeholder="Search products...">
 
-                <button type="submit">
+                <button type="submit"
+                    aria-label="Search">
 
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search" aria-hidden="true"></i>
 
                 </button>
 
             </form>
 
-            <nav id="navbar">
+            <nav id="navbar"
+                aria-label="Primary">
 
                 <ul class="nav-links">
 
@@ -156,15 +178,28 @@
 
             <div class="header-icons">
 
-                <a href="profile.html">
+                <button class="icon-btn theme-toggle"
+                    type="button"
+                    aria-pressed="false"
+                    aria-label="Switch to dark theme">
 
-                    <i class="far fa-user"></i>
+                    <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+
+                    <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+
+                </button>
+
+                <a href="profile.html"
+                    aria-label="My account">
+
+                    <i class="far fa-user" aria-hidden="true"></i>
 
                 </a>
 
-                <a href="wishlist.html">
+                <a href="wishlist.html"
+                    aria-label="Wishlist">
 
-                    <i class="far fa-heart"></i>
+                    <i class="far fa-heart" aria-hidden="true"></i>
 
                     <span id="wishlistCount">
 
@@ -175,9 +210,10 @@
                 </a>
 
                 <a href="cart.html"
-                    class="cart-icon">
+                    class="cart-icon"
+                    aria-label="Cart">
 
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
 
                     <span id="cartCount">
 
@@ -189,9 +225,21 @@
 
             </div>
 
-            <button class="menu-toggle">
+            <button class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+                aria-label="Open menu">
 
-                <i class="fas fa-bars"></i>
+                <span class="bars" aria-hidden="true">
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                </span>
 
             </button>
 
@@ -203,19 +251,61 @@
             MOBILE MENU
     ============================ -->
 
-    <aside class="mobile-menu">
+    <aside class="mobile-menu"
+        id="mobileMenu"
+        aria-label="Mobile navigation">
 
-        <a href="index.html">Home</a>
+        <button class="drawer-close"
+            type="button"
+            aria-label="Close menu">
 
-        <a href="products.html">Products</a>
+            <i class="fas fa-xmark" aria-hidden="true"></i>
 
-        <a href="wishlist.html">Wishlist</a>
+        </button>
 
-        <a href="cart.html">Cart</a>
+        <a href="index.html">
 
-        <a href="profile.html">Profile</a>
+            <i class="fas fa-house" aria-hidden="true"></i>
+
+            Home
+
+        </a>
+
+        <a href="products.html">
+
+            <i class="fas fa-grip" aria-hidden="true"></i>
+
+            Products
+
+        </a>
+
+        <a href="wishlist.html">
+
+            <i class="far fa-heart" aria-hidden="true"></i>
+
+            Wishlist
+
+        </a>
+
+        <a href="cart.html">
+
+            <i class="fas fa-bag-shopping" aria-hidden="true"></i>
+
+            Cart
+
+        </a>
+
+        <a href="profile.html">
+
+            <i class="far fa-user" aria-hidden="true"></i>
+
+            Profile
+
+        </a>
 
     </aside>
+
+    <main id="mainContent">
 
     <!-- ===========================
             PAGE HEADER
@@ -225,15 +315,19 @@
 
         <div class="container">
 
-            <h1>
+            <span class="eyebrow">The catalogue</span>
 
-                Our Products
+            <h1 id="shopHeading">
+
+                All Products
 
             </h1>
 
             <p>
 
-                Browse all 40 premium electronics available at ShopZone.
+                Forty pieces of considered technology — smartphones,
+                laptops, gaming gear, audio and accessories,
+                selected one by one.
 
             </p>
 
@@ -249,11 +343,75 @@
 
         <div class="container">
 
+            <!-- Category chips mirror the select below -->
+
+            <div class="filter-chips"
+                role="group"
+                aria-label="Filter by category">
+
+                <button class="chip active"
+                    type="button"
+                    data-category="all"
+                    aria-pressed="true">
+
+                    All
+
+                </button>
+
+                <button class="chip"
+                    type="button"
+                    data-category="smartphones"
+                    aria-pressed="false">
+
+                    Smartphones
+
+                </button>
+
+                <button class="chip"
+                    type="button"
+                    data-category="laptops"
+                    aria-pressed="false">
+
+                    Laptops
+
+                </button>
+
+                <button class="chip"
+                    type="button"
+                    data-category="gaming"
+                    aria-pressed="false">
+
+                    Gaming
+
+                </button>
+
+                <button class="chip"
+                    type="button"
+                    data-category="audio"
+                    aria-pressed="false">
+
+                    Audio
+
+                </button>
+
+                <button class="chip"
+                    type="button"
+                    data-category="accessories"
+                    aria-pressed="false">
+
+                    Accessories
+
+                </button>
+
+            </div>
+
             <div class="shop-toolbar">
 
                 <div class="results">
 
-                    <h3 id="productCount">
+                    <h3 id="productCount"
+                        role="status"
+                        aria-live="polite">
 
                         Showing 40 Products
 
@@ -262,6 +420,13 @@
                 </div>
 
                 <div class="shop-actions">
+
+                    <label for="categoryFilter"
+                        class="sr-only">
+
+                        Filter by category
+
+                    </label>
 
                     <select id="categoryFilter">
 
@@ -278,6 +443,13 @@
                         <option value="accessories">Accessories</option>
 
                     </select>
+
+                    <label for="sortProducts"
+                        class="sr-only">
+
+                        Sort products
+
+                    </label>
 
                     <select id="sortProducts">
 
@@ -335,11 +507,11 @@
 
         <div class="container">
 
-            <div class="newsletter-content">
+            <div class="newsletter-content" data-reveal>
 
                 <h2>
 
-                    Subscribe To Our Newsletter
+                    Subscribe to our newsletter
 
                 </h2>
 
@@ -354,8 +526,16 @@
                     id="newsletterForm"
                     class="newsletter-form">
 
+                    <label for="newsletterEmail"
+                        class="sr-only">
+
+                        Email address
+
+                    </label>
+
                     <input
                         type="email"
+                        id="newsletterEmail"
                         placeholder="Enter your email address"
                         required>
 
@@ -367,11 +547,19 @@
 
                 </form>
 
+                <p class="fineprint">
+
+                    No spam. Unsubscribe at any time.
+
+                </p>
+
             </div>
 
         </div>
 
     </section>
+
+    </main>
 
     <!-- ===========================
             FOOTER
@@ -466,7 +654,7 @@
 
                 <p>
 
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
 
                     support@shopzone.com
 
@@ -474,7 +662,7 @@
 
                 <p>
 
-                    <i class="fas fa-phone"></i>
+                    <i class="fas fa-phone" aria-hidden="true"></i>
 
                     +234 (705) 827-4305
 
@@ -482,15 +670,15 @@
 
                 <div class="social-links">
 
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
 
                 </div>
 
@@ -515,9 +703,11 @@
 
     <button
         id="backToTop"
-        title="Back To Top">
+        type="button"
+        title="Back To Top"
+        aria-label="Back to top">
 
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
 
     </button>
 

@@ -14,6 +14,9 @@
     <meta name="author"
         content="ShopZone">
 
+    <meta name="theme-color"
+        content="#fcfcfa">
+
     <title>Register | ShopZone</title>
 
     <link rel="icon"
@@ -28,7 +31,7 @@
         href="https://fonts.gstatic.com"
         crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..800&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -44,9 +47,20 @@
     <link rel="stylesheet"
         href="css/responsive.css">
 
+    <!-- Theme is applied before paint to avoid a flash -->
+
+    <script src="js/ui.js"></script>
+
 </head>
 
 <body>
+
+    <a href="#mainContent"
+        class="skip-link">
+
+        Skip to content
+
+    </a>
 
     <!-- ===========================
             TOP BAR
@@ -60,7 +74,7 @@
 
                 <p>
 
-                    🚚 Free Shipping On Orders Above $500
+                    Complimentary shipping on orders above $500
 
                 </p>
 
@@ -110,7 +124,8 @@
 
             </a>
 
-            <nav id="navbar">
+            <nav id="navbar"
+                aria-label="Primary">
 
                 <ul class="nav-links">
 
@@ -126,9 +141,102 @@
 
             </nav>
 
+            <div class="header-icons">
+
+                <button class="icon-btn theme-toggle"
+                    type="button"
+                    aria-pressed="false"
+                    aria-label="Switch to dark theme">
+
+                    <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+
+                    <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+
+                </button>
+
+            </div>
+
+            <button class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+                aria-label="Open menu">
+
+                <span class="bars" aria-hidden="true">
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                </span>
+
+            </button>
+
         </div>
 
     </header>
+
+    <!-- ===========================
+            MOBILE MENU
+    ============================ -->
+
+    <aside class="mobile-menu"
+        id="mobileMenu"
+        aria-label="Mobile navigation">
+
+        <button class="drawer-close"
+            type="button"
+            aria-label="Close menu">
+
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+
+        </button>
+
+        <a href="index.html">
+
+            <i class="fas fa-house" aria-hidden="true"></i>
+
+            Home
+
+        </a>
+
+        <a href="products.html">
+
+            <i class="fas fa-grip" aria-hidden="true"></i>
+
+            Products
+
+        </a>
+
+        <a href="wishlist.html">
+
+            <i class="far fa-heart" aria-hidden="true"></i>
+
+            Wishlist
+
+        </a>
+
+        <a href="cart.html">
+
+            <i class="fas fa-bag-shopping" aria-hidden="true"></i>
+
+            Cart
+
+        </a>
+
+        <a href="profile.html">
+
+            <i class="far fa-user" aria-hidden="true"></i>
+
+            Profile
+
+        </a>
+
+    </aside>
+
+    <main id="mainContent">
 
     <!-- ===========================
             REGISTER
@@ -138,7 +246,9 @@
 
         <div class="container">
 
-            <div class="auth-card">
+            <div class="auth-card" data-reveal>
+
+                <span class="eyebrow">Join ShopZone</span>
 
                 <h1>
 
@@ -156,7 +266,7 @@
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="registerName">
 
                             Full Name
 
@@ -165,6 +275,7 @@
                         <input
                             type="text"
                             id="registerName"
+                            autocomplete="name"
                             placeholder="Enter your full name"
                             required>
 
@@ -172,7 +283,7 @@
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="registerEmail">
 
                             Email Address
 
@@ -181,6 +292,7 @@
                         <input
                             type="email"
                             id="registerEmail"
+                            autocomplete="email"
                             placeholder="Enter your email"
                             required>
 
@@ -188,41 +300,68 @@
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="registerPassword">
 
                             Password
 
                         </label>
 
-                        <input
-                            type="password"
-                            id="registerPassword"
-                            placeholder="Create a password"
-                            required>
+                        <div class="password-field">
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                autocomplete="new-password"
+                                placeholder="Create a password"
+                                required>
+
+                            <button type="button"
+                                class="toggle-password"
+                                aria-label="Show password">
+
+                                <i class="fas fa-eye" aria-hidden="true"></i>
+
+                            </button>
+
+                        </div>
 
                     </div>
 
                     <div class="form-group">
 
-                        <label>
+                        <label for="confirmPassword">
 
                             Confirm Password
 
                         </label>
 
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            placeholder="Confirm your password"
-                            required>
+                        <div class="password-field">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                autocomplete="new-password"
+                                placeholder="Confirm your password"
+                                required>
+
+                            <button type="button"
+                                class="toggle-password"
+                                aria-label="Show password">
+
+                                <i class="fas fa-eye" aria-hidden="true"></i>
+
+                            </button>
+
+                        </div>
 
                     </div>
 
                     <button
                         type="submit"
-                        class="btn btn-primary">
+                        class="btn btn-primary btn-lg"
+                        data-magnetic>
 
-                        <i class="fas fa-user-plus"></i>
+                        <i class="fas fa-user-plus" aria-hidden="true"></i>
 
                         Create Account
 
@@ -251,6 +390,8 @@
         </div>
 
     </section>
+
+    </main>
 
     <!-- ===========================
             FOOTER

@@ -1,18 +1,28 @@
 /*==================================================
+    SHOPZONE — ADMIN
+
+    Layout is unchanged; the palette now reads from
+    style.css tokens so the dashboard inherits the
+    editorial identity and the dark theme instead of
+    carrying its own hard-coded blues and greys.
+==================================================*/
+
+
+/*==================================================
                 ADMIN LAYOUT
 ==================================================*/
 
 body{
 
-    background:#f5f7fb;
+    background:var(--canvas);
 
 }
 
 .admin-header{
 
-    background:#111827;
+    background:var(--ink-900);
 
-    color:#fff;
+    color:var(--ink-0);
 
     padding:20px 0;
 
@@ -34,6 +44,13 @@ body{
 
 }
 
+.admin-header a,
+.admin-header h2{
+
+    color:inherit;
+
+}
+
 .admin-logo{
 
     display:flex;
@@ -47,6 +64,16 @@ body{
 .admin-logo img{
 
     width:50px;
+
+}
+
+.admin-logo h2{
+
+    font-family:var(--font-display);
+
+    font-size:var(--step-1);
+
+    letter-spacing:var(--tracking-tight);
 
 }
 
@@ -86,15 +113,21 @@ body{
 
 .admin-sidebar{
 
-    background:#fff;
+    background:var(--surface);
 
-    border-radius:12px;
+    border:var(--hairline);
 
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    border-radius:var(--r-lg);
+
+    box-shadow:var(--shadow-md);
 
     padding:25px;
 
     height:fit-content;
+
+    position:sticky;
+
+    top:calc(var(--header-h) + 1.5rem);
 
 }
 
@@ -118,19 +151,31 @@ body{
 
     padding:14px 18px;
 
-    border-radius:10px;
+    border-radius:var(--r-md);
 
-    transition:.3s;
+    color:var(--fg-muted);
+
+    font-size:var(--step--1);
+
+    font-weight:500;
+
+    transition:background var(--dur-2) var(--ease-out),color var(--dur-2) var(--ease-out);
 
 }
 
-.admin-sidebar a:hover,
+.admin-sidebar a:hover{
+
+    background:var(--surface-2);
+
+    color:var(--fg);
+
+}
 
 .admin-sidebar a.active{
 
-    background:#2563eb;
+    background:var(--fg);
 
-    color:#fff;
+    color:var(--canvas);
 
 }
 
@@ -151,13 +196,21 @@ body{
 
 .admin-content section{
 
-    background:#fff;
+    background:var(--surface);
+
+    border:var(--hairline);
 
     padding:30px;
 
-    border-radius:12px;
+    border-radius:var(--r-lg);
 
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    box-shadow:var(--shadow-md);
+
+}
+
+.admin-content h2{
+
+    font-size:var(--step-2);
 
 }
 
@@ -180,21 +233,43 @@ body{
 
 .dashboard-card{
 
-    background:#2563eb;
+    background:var(--surface-2);
 
-    color:#fff;
+    border:var(--hairline);
+
+    color:var(--fg);
 
     padding:25px;
 
-    border-radius:12px;
+    border-radius:var(--r-md);
 
     text-align:center;
+
+    transition:transform var(--dur-2) var(--ease-out),border-color var(--dur-2) var(--ease-out);
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--fg);
 
 }
 
 .dashboard-card h3{
 
-    font-size:1rem;
+    font-family:var(--font-sans);
+
+    font-size:var(--step--2);
+
+    font-weight:600;
+
+    letter-spacing:var(--tracking-caps);
+
+    text-transform:uppercase;
+
+    color:var(--fg-subtle);
 
     margin-bottom:10px;
 
@@ -202,7 +277,11 @@ body{
 
 .dashboard-card h2{
 
-    font-size:2rem;
+    font-family:var(--font-display);
+
+    font-size:var(--step-3);
+
+    font-variant-numeric:tabular-nums;
 
 }
 
@@ -218,6 +297,8 @@ body{
     justify-content:space-between;
 
     align-items:center;
+
+    gap:1rem;
 
     margin-bottom:25px;
 
@@ -274,9 +355,21 @@ body{
 
     padding:14px;
 
-    border:1px solid #ddd;
+    border:1px solid var(--line);
 
-    border-radius:8px;
+    border-radius:var(--r-sm);
+
+    background:var(--surface);
+
+    color:var(--fg);
+
+}
+
+#settingsForm input:focus{
+
+    outline:none;
+
+    border-color:var(--fg);
 
 }
 
@@ -301,13 +394,23 @@ body{
 
 .admin-table th{
 
-    background:#2563eb;
+    background:var(--surface-2);
 
-    color:#fff;
+    color:var(--fg);
 
     padding:15px;
 
     text-align:left;
+
+    font-size:var(--step--2);
+
+    font-weight:600;
+
+    letter-spacing:var(--tracking-caps);
+
+    text-transform:uppercase;
+
+    border-bottom:1px solid var(--line);
 
 }
 
@@ -315,7 +418,9 @@ body{
 
     padding:15px;
 
-    border-bottom:1px solid #eee;
+    border-bottom:var(--hairline);
+
+    font-size:var(--step--1);
 
 }
 
@@ -326,9 +431,9 @@ body{
 
 .admin-footer{
 
-    background:#111827;
+    background:var(--ink-900);
 
-    color:#fff;
+    color:var(--ink-0);
 
     text-align:center;
 
@@ -348,6 +453,12 @@ body{
     .admin-layout{
 
         grid-template-columns:1fr;
+
+    }
+
+    .admin-sidebar{
+
+        position:static;
 
     }
 

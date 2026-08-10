@@ -1,4 +1,49 @@
 /*==================================================
+                FEEDBACK
+
+    Same resolution chain the rest of the project
+    uses: notify() if app.js is loaded, the toast
+    region if only ui.js is, alert() otherwise.
+==================================================*/
+
+function checkoutNotify(title, options = {}) {
+
+    if (typeof notify === "function") {
+
+        notify(title, options);
+
+        return;
+
+    }
+
+    if (typeof window.showToast === "function") {
+
+        window.showToast(title, options);
+
+        return;
+
+    }
+
+    alert(options.detail ? `${title} — ${options.detail}` : title);
+
+}
+
+function checkoutFlash(title, options = {}) {
+
+    if (typeof window.flashToast === "function") {
+
+        window.flashToast(title, options);
+
+        return;
+
+    }
+
+    checkoutNotify(title, options);
+
+}
+
+
+/*==================================================
                 LOAD CHECKOUT
 ==================================================*/
 
@@ -135,7 +180,13 @@ function placeOrder() {
 
     if (!currentUser) {
 
-        alert("Please login before placing an order.");
+        checkoutFlash("Sign in to place your order", {
+
+            detail: "Your bag is saved and waiting.",
+
+            type: "info"
+
+        });
 
         window.location.href = "login.html";
 
@@ -145,7 +196,17 @@ function placeOrder() {
 
     if (cart.length === 0) {
 
-        alert("Your cart is empty.");
+        checkoutNotify("Your bag is empty", {
+
+            detail: "Add something before checking out.",
+
+            type: "error",
+
+            actionLabel: "Browse products",
+
+            actionHref: "products.html"
+
+        });
 
         return;
 
@@ -205,7 +266,13 @@ function placeOrder() {
 
     updateCartCount();
 
-    alert("Order placed successfully!");
+    checkoutFlash("Order confirmed", {
+
+        detail: `Order #${order.id} — $${order.total.toFixed(2)}. A receipt is on its way.`,
+
+        type: "success"
+
+    });
 
     window.location.href = "profile.html";
 
@@ -274,6 +341,30 @@ const checkoutForm = document.getElementById("checkoutForm");
 if (checkoutForm) {
 
     checkoutForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        placeOrder();
+
+    });
+
+}
+
+
+/*==================================================
+                PLACE ORDER BUTTON
+
+    The button lives in the order summary, which sits
+    outside the form, so submitting the form never
+    reaches it and the form has no submit control of
+    its own. It has to be bound directly.
+==================================================*/
+
+const placeOrderButton = document.getElementById("placeOrderBtn");
+
+if (placeOrderButton) {
+
+    placeOrderButton.addEventListener("click", function (event) {
 
         event.preventDefault();
 

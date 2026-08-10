@@ -48,6 +48,56 @@ function saveCurrentUser() {
 
 
 /*==================================================
+                FEEDBACK
+
+    ui.js owns the toast region and app.js owns
+    notify(). Script order differs between pages, so
+    this resolves whichever is present at call time
+    and still works on its own.
+
+    flash() is for the messages raised immediately
+    before a redirect — those are handed to the page
+    being navigated to, or they never get read.
+==================================================*/
+
+function authNotify(title, options = {}) {
+
+    if (typeof notify === "function") {
+
+        notify(title, options);
+
+        return;
+
+    }
+
+    if (typeof window.showToast === "function") {
+
+        window.showToast(title, options);
+
+        return;
+
+    }
+
+    alert(options.detail ? `${title} — ${options.detail}` : title);
+
+}
+
+function authFlash(title, options = {}) {
+
+    if (typeof window.flashToast === "function") {
+
+        window.flashToast(title, options);
+
+        return;
+
+    }
+
+    authNotify(title, options);
+
+}
+
+
+/*==================================================
                 REGISTER
 ==================================================*/
 
@@ -61,7 +111,17 @@ function registerUser(name, email, password) {
 
     if (exists) {
 
-        alert("Email already exists.");
+        authNotify("That email is already registered", {
+
+            detail: "Sign in instead, or use another address.",
+
+            type: "error",
+
+            actionLabel: "Sign in",
+
+            actionHref: "login.html"
+
+        });
 
         return false;
 
@@ -85,7 +145,13 @@ function registerUser(name, email, password) {
 
     saveUsers();
 
-    alert("Registration successful.");
+    authFlash("Account created", {
+
+        detail: `Welcome to ShopZone, ${user.name}. Sign in to start shopping.`,
+
+        type: "success"
+
+    });
 
     window.location.href = "login.html";
 
@@ -110,7 +176,13 @@ function loginUser(email, password) {
 
     if (!user) {
 
-        alert("Invalid email or password.");
+        authNotify("We could not sign you in", {
+
+            detail: "Check your email address and password.",
+
+            type: "error"
+
+        });
 
         return false;
 
@@ -120,7 +192,13 @@ function loginUser(email, password) {
 
     saveCurrentUser();
 
-    alert(`Welcome ${user.name}!`);
+    authFlash(`Welcome back, ${user.name}`, {
+
+        detail: "You are signed in.",
+
+        type: "success"
+
+    });
 
     window.location.href = "profile.html";
 
@@ -138,6 +216,14 @@ function logoutUser() {
     localStorage.removeItem(CURRENT_USER_KEY);
 
     currentUser = null;
+
+    authFlash("You have been signed out", {
+
+        detail: "Your bag and wishlist are still saved.",
+
+        type: "info"
+
+    });
 
     window.location.href = "login.html";
 
@@ -212,7 +298,13 @@ function updateProfile(name, email) {
 
     saveCurrentUser();
 
-    alert("Profile updated successfully.");
+    authNotify("Profile updated", {
+
+        detail: "Your account details have been saved.",
+
+        type: "success"
+
+    });
 
     loadProfile();
 
@@ -232,6 +324,17 @@ function protectProfilePage() {
         !currentUser
 
     ) {
+
+        /*  The bounce used to be silent, which reads as a
+            broken link rather than a locked page. */
+
+        authFlash("Sign in to view your profile", {
+
+            detail: "Your account area is private.",
+
+            type: "info"
+
+        });
 
         window.location.href = "login.html";
 
@@ -262,7 +365,26 @@ if (registerForm) {
 
         if (password !== confirmPassword) {
 
-            alert("Passwords do not match.");
+            authNotify("Those passwords do not match", {
+
+                detail: "Re-enter your confirmation password.",
+
+                type: "error"
+
+            });
+
+            /*  Without the blocking dialog the form stays
+                live, so put the cursor where the fix is. */
+
+            const confirmField = document.getElementById("confirmPassword");
+
+            if (confirmField) {
+
+                confirmField.value = "";
+
+                confirmField.focus();
+
+            }
 
             return;
 

@@ -18,18 +18,25 @@
     <meta name="author"
         content="ShopZone">
 
+    <meta name="theme-color"
+        content="#fcfcfa">
+
     <title>
 
         Product Details | ShopZone
 
     </title>
 
-    <!-- Favicon -->
+    <!-- ===========================
+            FAVICON
+    ============================ -->
 
     <link rel="icon"
         href="images/logo.png">
 
-    <!-- Google Font -->
+    <!-- ===========================
+            GOOGLE FONTS
+    ============================ -->
 
     <link rel="preconnect"
         href="https://fonts.googleapis.com">
@@ -38,15 +45,19 @@
         href="https://fonts.gstatic.com"
         crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..800&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
+    <!-- ===========================
+            FONT AWESOME
+    ============================ -->
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <!-- CSS -->
+    <!-- ===========================
+            CSS
+    ============================ -->
 
     <link rel="stylesheet"
         href="css/style.css">
@@ -54,9 +65,20 @@
     <link rel="stylesheet"
         href="css/responsive.css">
 
+    <!-- Theme is applied before paint to avoid a flash -->
+
+    <script src="js/ui.js"></script>
+
 </head>
 
 <body>
+
+    <a href="#mainContent"
+        class="skip-link">
+
+        Skip to content
+
+    </a>
 
     <!-- ===========================
             TOP BAR
@@ -70,7 +92,7 @@
 
                 <p>
 
-                    🚚 Free Shipping On Orders Above $500
+                    Complimentary shipping on orders above $500
 
                 </p>
 
@@ -104,37 +126,44 @@
                 <img src="images/logo.png"
                     alt="ShopZone Logo">
 
-                <span>
-
-                    ShopZone
-
-                </span>
+                <span>ShopZone</span>
 
             </a>
 
-            <form
-                id="searchForm"
-                class="search-box">
+            <form id="searchForm"
+                class="search-box"
+                role="search">
+
+                <label for="searchInput"
+                    class="sr-only">
+
+                    Search products
+
+                </label>
 
                 <input
                     type="search"
+                    id="searchInput"
                     placeholder="Search products...">
 
-                <button>
+                <button type="submit"
+                    aria-label="Search">
 
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search" aria-hidden="true"></i>
 
                 </button>
 
             </form>
 
-            <nav id="navbar">
+            <nav id="navbar"
+                aria-label="Primary">
 
                 <ul class="nav-links">
 
                     <li><a href="index.html">Home</a></li>
 
-                    <li><a href="products.html">Products</a></li>
+                    <li><a class="active"
+                            href="products.html">Products</a></li>
 
                     <li><a href="wishlist.html">Wishlist</a></li>
 
@@ -148,15 +177,28 @@
 
             <div class="header-icons">
 
-                <a href="profile.html">
+                <button class="icon-btn theme-toggle"
+                    type="button"
+                    aria-pressed="false"
+                    aria-label="Switch to dark theme">
 
-                    <i class="far fa-user"></i>
+                    <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+
+                    <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+
+                </button>
+
+                <a href="profile.html"
+                    aria-label="My account">
+
+                    <i class="far fa-user" aria-hidden="true"></i>
 
                 </a>
 
-                <a href="wishlist.html">
+                <a href="wishlist.html"
+                    aria-label="Wishlist">
 
-                    <i class="far fa-heart"></i>
+                    <i class="far fa-heart" aria-hidden="true"></i>
 
                     <span id="wishlistCount">
 
@@ -167,9 +209,10 @@
                 </a>
 
                 <a href="cart.html"
-                    class="cart-icon">
+                    class="cart-icon"
+                    aria-label="Cart">
 
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
 
                     <span id="cartCount">
 
@@ -181,15 +224,93 @@
 
             </div>
 
+            <button class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+                aria-label="Open menu">
+
+                <span class="bars" aria-hidden="true">
+
+                    <span></span>
+
+                    <span></span>
+
+                    <span></span>
+
+                </span>
+
+            </button>
+
         </div>
 
     </header>
 
     <!-- ===========================
+            MOBILE MENU
+    ============================ -->
+
+    <aside class="mobile-menu"
+        id="mobileMenu"
+        aria-label="Mobile navigation">
+
+        <button class="drawer-close"
+            type="button"
+            aria-label="Close menu">
+
+            <i class="fas fa-xmark" aria-hidden="true"></i>
+
+        </button>
+
+        <a href="index.html">
+
+            <i class="fas fa-house" aria-hidden="true"></i>
+
+            Home
+
+        </a>
+
+        <a href="products.html">
+
+            <i class="fas fa-grip" aria-hidden="true"></i>
+
+            Products
+
+        </a>
+
+        <a href="wishlist.html">
+
+            <i class="far fa-heart" aria-hidden="true"></i>
+
+            Wishlist
+
+        </a>
+
+        <a href="cart.html">
+
+            <i class="fas fa-bag-shopping" aria-hidden="true"></i>
+
+            Cart
+
+        </a>
+
+        <a href="profile.html">
+
+            <i class="far fa-user" aria-hidden="true"></i>
+
+            Profile
+
+        </a>
+
+    </aside>
+
+    <main id="mainContent">
+    <!-- ===========================
             BREADCRUMB
     ============================ -->
 
-    <section class="breadcrumb">
+    <nav class="breadcrumb"
+        aria-label="Breadcrumb">
 
         <div class="container">
 
@@ -199,7 +320,7 @@
 
             </a>
 
-            <span>/</span>
+            <span aria-hidden="true">/</span>
 
             <a href="products.html">
 
@@ -207,9 +328,10 @@
 
             </a>
 
-            <span>/</span>
+            <span aria-hidden="true">/</span>
 
-            <span id="breadcrumbProduct">
+            <span id="breadcrumbProduct"
+                aria-current="page">
 
                 Product Details
 
@@ -217,7 +339,7 @@
 
         </div>
 
-    </section>
+    </nav>
 
     <!-- ===========================
             PRODUCT DETAILS
@@ -236,15 +358,18 @@
                     <img
                         id="productImage"
                         src=""
-                        alt="Product">
+                        alt="Product"
+                        fetchpriority="high">
 
                 </div>
 
+                <!-- app.js builds the thumbnails from the product -->
+
                 <div
                     class="thumbnail-gallery"
-                    id="thumbnailGallery">
-
-                    <!-- Generated by products.js -->
+                    id="thumbnailGallery"
+                    role="group"
+                    aria-label="Product images">
 
                 </div>
 
@@ -255,7 +380,7 @@
             <div class="product-info">
 
                 <span
-                    class="product-category"
+                    class="product-category eyebrow"
                     id="productCategory">
 
                 </span>
@@ -266,15 +391,11 @@
 
                 <div class="product-rating">
 
-                    <i class="fas fa-star"></i>
+                    <span class="stars"
+                        id="productStars"
+                        aria-hidden="true">
 
-                    <i class="fas fa-star"></i>
-
-                    <i class="fas fa-star"></i>
-
-                    <i class="fas fa-star"></i>
-
-                    <i class="fas fa-star-half-alt"></i>
+                    </span>
 
                     <span id="reviewCount">
 
@@ -284,9 +405,26 @@
 
                 </div>
 
-                <h2 id="productPrice">
+                <div class="price-row">
 
-                </h2>
+                    <h2 id="productPrice">
+
+                    </h2>
+
+                    <span class="old-price"
+                        id="productOldPrice"></span>
+
+                    <span class="save-tag"
+                        id="productSave"></span>
+
+                </div>
+
+                <span class="stock-pill"
+                    id="productStockPill">
+
+                    In Stock
+
+                </span>
 
                 <div class="product-meta">
 
@@ -327,17 +465,38 @@
 
                 <div class="quantity-selector">
 
-                    <label>
+                    <label for="quantity">
 
                         Quantity
 
                     </label>
 
-                    <input
-                        type="number"
-                        id="quantity"
-                        value="1"
-                        min="1">
+                    <div class="qty-control">
+
+                        <button type="button"
+                            class="qty-down"
+                            aria-label="Decrease quantity">
+
+                            <i class="fas fa-minus" aria-hidden="true"></i>
+
+                        </button>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            value="1"
+                            min="1"
+                            inputmode="numeric">
+
+                        <button type="button"
+                            class="qty-up"
+                            aria-label="Increase quantity">
+
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -345,9 +504,11 @@
 
                     <button
                         id="addToCartBtn"
-                        class="btn btn-primary">
+                        type="button"
+                        class="btn btn-primary btn-lg"
+                        data-magnetic>
 
-                        <i class="fas fa-cart-shopping"></i>
+                        <i class="fas fa-cart-shopping" aria-hidden="true"></i>
 
                         Add To Cart
 
@@ -355,9 +516,11 @@
 
                     <button
                         id="wishlistBtn"
-                        class="btn btn-secondary">
+                        type="button"
+                        class="btn btn-secondary btn-lg"
+                        aria-pressed="false">
 
-                        <i class="far fa-heart"></i>
+                        <i class="far fa-heart" aria-hidden="true"></i>
 
                         Wishlist
 
@@ -365,7 +528,8 @@
 
                     <button
                         id="buyNowBtn"
-                        class="btn btn-success">
+                        type="button"
+                        class="btn btn-ghost btn-lg">
 
                         Buy Now
 
@@ -378,8 +542,7 @@
         </div>
 
     </section>
-
-        <!-- ===========================
+    <!-- ===========================
             PRODUCT SPECIFICATIONS
     ============================ -->
 
@@ -387,17 +550,23 @@
 
         <div class="container">
 
-            <div class="section-header">
+            <div class="section-header" data-reveal>
 
-                <h2>Specifications</h2>
+                <div>
 
-                <p>Technical details of this product.</p>
+                    <span class="eyebrow">01 — The detail</span>
+
+                    <h2>Specifications</h2>
+
+                    <p>Technical details of this product.</p>
+
+                </div>
 
             </div>
 
             <table id="specificationTable">
 
-                <!-- products.js will generate specifications -->
+                <!-- app.js will generate specifications -->
 
             </table>
 
@@ -413,17 +582,23 @@
 
         <div class="container">
 
-            <div class="section-header">
+            <div class="section-header" data-reveal>
 
-                <h2>Why You'll Love It</h2>
+                <div>
+
+                    <span class="eyebrow">02 — The promise</span>
+
+                    <h2>Why You'll Love It</h2>
+
+                </div>
 
             </div>
 
-            <div class="features-grid">
+            <div class="features-grid" data-reveal-group>
 
                 <div class="feature-card">
 
-                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
 
                     <h3>Original Product</h3>
 
@@ -433,7 +608,7 @@
 
                 <div class="feature-card">
 
-                    <i class="fas fa-truck-fast"></i>
+                    <i class="fas fa-truck-fast" aria-hidden="true"></i>
 
                     <h3>Fast Delivery</h3>
 
@@ -443,7 +618,7 @@
 
                 <div class="feature-card">
 
-                    <i class="fas fa-shield-halved"></i>
+                    <i class="fas fa-shield-halved" aria-hidden="true"></i>
 
                     <h3>Warranty</h3>
 
@@ -453,7 +628,7 @@
 
                 <div class="feature-card">
 
-                    <i class="fas fa-rotate-left"></i>
+                    <i class="fas fa-rotate-left" aria-hidden="true"></i>
 
                     <h3>Easy Returns</h3>
 
@@ -475,9 +650,11 @@
 
         <div class="container">
 
-            <div class="section-header">
+            <div class="section-header" data-reveal>
 
                 <div>
+
+                    <span class="eyebrow">03 — Nearby</span>
 
                     <h2>Related Products</h2>
 
@@ -489,7 +666,7 @@
 
                     View All
 
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
 
                 </a>
 
@@ -499,7 +676,7 @@
                 class="products-grid"
                 id="relatedProducts">
 
-                <!-- products.js loads 4 related products -->
+                <!-- app.js loads 4 related products -->
 
             </div>
 
@@ -515,11 +692,11 @@
 
         <div class="container">
 
-            <div class="newsletter-content">
+            <div class="newsletter-content" data-reveal>
 
                 <h2>
 
-                    Subscribe To Our Newsletter
+                    Subscribe to our newsletter
 
                 </h2>
 
@@ -534,8 +711,16 @@
                     id="newsletterForm"
                     class="newsletter-form">
 
+                    <label for="newsletterEmail"
+                        class="sr-only">
+
+                        Email address
+
+                    </label>
+
                     <input
                         type="email"
+                        id="newsletterEmail"
                         placeholder="Enter your email address"
                         required>
 
@@ -547,11 +732,19 @@
 
                 </form>
 
+                <p class="fineprint">
+
+                    No spam. Unsubscribe at any time.
+
+                </p>
+
             </div>
 
         </div>
 
     </section>
+
+    </main>
 
     <!-- ===========================
             FOOTER
@@ -627,21 +820,33 @@
 
                 <h3>Contact Us</h3>
 
-                <p><i class="fas fa-envelope"></i> support@shopzone.com</p>
+                <p>
 
-                <p><i class="fas fa-phone"></i> +234 (705) 827-4305       </p>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+
+                    support@shopzone.com
+
+                </p>
+
+                <p>
+
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+
+                    +234 (705) 827-4305
+
+                </p>
 
                 <div class="social-links">
 
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
 
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
 
                 </div>
 
@@ -667,9 +872,11 @@
 
     <button
         id="backToTop"
-        title="Back To Top">
+        type="button"
+        title="Back To Top"
+        aria-label="Back to top">
 
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
 
     </button>
 
@@ -684,6 +891,7 @@
     <script src="js/app.js"></script>
 
     <script src="js/auth.js"></script>
+
 
 </body>
 

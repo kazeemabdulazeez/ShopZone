@@ -111,21 +111,84 @@ updateCartCount();
 
 updateWishlistCount();
 
+
+/*==================================================
+                FEEDBACK
+
+    app.js owns notify() and ui.js owns the toast
+    region. Script order differs between pages, so
+    this resolves whichever is present at call time
+    and still works on its own.
+==================================================*/
+
+function cartNotify(title, options = {}) {
+
+    if (typeof notify === "function") {
+
+        notify(title, options);
+
+        return;
+
+    }
+
+    if (typeof window.showToast === "function") {
+
+        window.showToast(title, options);
+
+        return;
+
+    }
+
+    alert(options.detail ? `${title} — ${options.detail}` : title);
+
+}
+
+
+/*  Every .wishlist-btn in the document reflects the
+    saved wishlist, so a heart toggled on the details
+    page also updates the cards behind it. */
+
+function syncWishlistButtons() {
+
+    document.querySelectorAll(".wishlist-btn[data-id]").forEach(button => {
+
+        const active = isInWishlist(button.dataset.id);
+
+        button.classList.toggle("active", active);
+
+        button.setAttribute("aria-pressed", String(active));
+
+        const icon = button.querySelector("i");
+
+        if (icon) {
+
+            icon.classList.toggle("fas", active);
+
+            icon.classList.toggle("far", !active);
+
+        }
+
+    });
+
+}
+
 /*==================================================
                 ADD TO CART
 ==================================================*/
 
-function addToCart(productId) {
+function addToCart(productId, quantity = 1) {
 
     const product = getProductById(productId);
 
     if (!product) return;
 
+    const amount = Math.max(1, parseInt(quantity, 10) || 1);
+
     const existingItem = getCartItem(productId);
 
     if (existingItem) {
 
-        existingItem.quantity++;
+        existingItem.quantity += amount;
 
     } else {
 
@@ -133,7 +196,7 @@ function addToCart(productId) {
 
             id: product.id,
 
-            quantity: 1
+            quantity: amount
 
         });
 
@@ -143,7 +206,21 @@ function addToCart(productId) {
 
     updateCartCount();
 
-    alert(`${product.name} added to cart.`);
+    cartNotify("Added to bag", {
+
+        detail: amount > 1
+
+            ? `${amount} × ${product.name}`
+
+            : product.name,
+
+        type: "success",
+
+        actionLabel: "View bag",
+
+        actionHref: "cart.html"
+
+    });
 
 }
 
@@ -237,6 +314,14 @@ function clearCart() {
 
     renderCart();
 
+    cartNotify("Bag cleared", {
+
+        detail: "Every item has been removed.",
+
+        type: "info"
+
+    });
+
 }
 
 
@@ -289,6 +374,28 @@ function toggleWishlist(productId) {
     updateWishlistCount();
 
     renderWishlist();
+
+    syncWishlistButtons();
+
+    const product = getProductById(id);
+
+    cartNotify(
+
+        index === -1 ? "Saved to wishlist" : "Removed from wishlist",
+
+        {
+
+            detail: product ? product.name : "",
+
+            type: index === -1 ? "success" : "info",
+
+            actionLabel: index === -1 ? "View wishlist" : "",
+
+            actionHref: index === -1 ? "wishlist.html" : ""
+
+        }
+
+    );
 
 }
 
@@ -375,7 +482,7 @@ function renderCart() {
         return `
             <div class="cart-item">
 
-                <img src="${product.image}" alt="${product.name}">
+                <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
 
                 <div class="cart-info">
 
@@ -385,19 +492,19 @@ function renderCart() {
 
                     <div class="cart-quantity">
 
-                        <button class="decrease-btn" data-id="${product.id}">-</button>
+                        <button class="decrease-btn" type="button" data-id="${product.id}" aria-label="Decrease quantity of ${product.name}">-</button>
 
                         <span>${item.quantity}</span>
 
-                        <button class="increase-btn" data-id="${product.id}">+</button>
+                        <button class="increase-btn" type="button" data-id="${product.id}" aria-label="Increase quantity of ${product.name}">+</button>
 
                     </div>
 
                 </div>
 
-                <button class="remove-btn" data-id="${product.id}">
+                <button class="remove-btn" type="button" data-id="${product.id}" title="Remove" aria-label="Remove ${product.name} from bag">
 
-                    Remove
+                    <i class="fas fa-xmark" aria-hidden="true"></i>
 
                 </button>
 
@@ -405,6 +512,12 @@ function renderCart() {
         `;
 
     }).join("");
+
+    if (typeof window.revealNewContent === "function") {
+
+        window.revealNewContent(container);
+
+    }
 
     const totals = calculateCartTotals();
 
@@ -467,6 +580,12 @@ function renderWishlist() {
 
         .join("");
 
+    if (typeof window.revealNewContent === "function") {
+
+        window.revealNewContent(container);
+
+    }
+
 }
 
 
@@ -520,5 +639,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
 
     updateWishlistCount();
+
+    syncWishlistButtons();
 
 });

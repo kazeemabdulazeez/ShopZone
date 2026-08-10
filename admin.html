@@ -11,6 +11,9 @@
     <meta name="description"
         content="ShopZone Admin Dashboard">
 
+    <meta name="theme-color"
+        content="#fcfcfa">
+
     <title>Admin Dashboard | ShopZone</title>
 
     <link rel="icon"
@@ -25,7 +28,7 @@
         href="https://fonts.gstatic.com"
         crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..800&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -41,9 +44,20 @@
     <link rel="stylesheet"
         href="css/admin.css">
 
+    <!-- Theme is applied before paint to avoid a flash -->
+
+    <script src="js/ui.js"></script>
+
 </head>
 
 <body>
+
+    <a href="#adminMain"
+        class="skip-link">
+
+        Skip to content
+
+    </a>
 
     <!-- ===========================
             ADMIN HEADER
@@ -69,6 +83,17 @@
 
             <div class="admin-actions">
 
+                <button class="icon-btn theme-toggle"
+                    type="button"
+                    aria-pressed="false"
+                    aria-label="Switch to dark theme">
+
+                    <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+
+                    <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+
+                </button>
+
                 <a
                     href="index.html"
                     class="btn">
@@ -79,6 +104,7 @@
 
                 <button
                     id="adminLogout"
+                    type="button"
                     class="btn btn-danger">
 
                     Logout
@@ -103,6 +129,8 @@
 
             <aside class="admin-sidebar">
 
+                <nav aria-label="Admin sections">
+
                 <ul>
 
                     <li>
@@ -111,7 +139,7 @@
                             class="active"
                             href="#dashboard">
 
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
 
                             Dashboard
 
@@ -123,7 +151,7 @@
 
                         <a href="#products">
 
-                            <i class="fas fa-box"></i>
+                            <i class="fas fa-box" aria-hidden="true"></i>
 
                             Products
 
@@ -135,7 +163,7 @@
 
                         <a href="#orders">
 
-                            <i class="fas fa-cart-shopping"></i>
+                            <i class="fas fa-cart-shopping" aria-hidden="true"></i>
 
                             Orders
 
@@ -147,7 +175,7 @@
 
                         <a href="#customers">
 
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-users" aria-hidden="true"></i>
 
                             Customers
 
@@ -159,7 +187,7 @@
 
                         <a href="#settings">
 
-                            <i class="fas fa-gear"></i>
+                            <i class="fas fa-gear" aria-hidden="true"></i>
 
                             Settings
 
@@ -169,11 +197,15 @@
 
                 </ul>
 
+
+
+                </nav>
+
             </aside>
 
             <!-- Main Content -->
 
-            <main class="admin-content">
+            <main class="admin-content" id="adminMain">
 
                 <section id="dashboard">
 
@@ -251,6 +283,7 @@
 
                         <button
                             id="addProductBtn"
+                            type="button"
                             class="btn btn-primary">
 
                             Add Product

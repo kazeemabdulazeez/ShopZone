@@ -18,6 +18,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /*==================================================
+                FEEDBACK
+
+    Same resolution chain the rest of the project
+    uses. flash() carries a message across the two
+    redirects the guard below can perform.
+==================================================*/
+
+function adminNotify(title, options = {}) {
+
+    if (typeof notify === "function") {
+
+        notify(title, options);
+
+        return;
+
+    }
+
+    if (typeof window.showToast === "function") {
+
+        window.showToast(title, options);
+
+        return;
+
+    }
+
+    alert(options.detail ? `${title} — ${options.detail}` : title);
+
+}
+
+function adminFlash(title, options = {}) {
+
+    if (typeof window.flashToast === "function") {
+
+        window.flashToast(title, options);
+
+        return;
+
+    }
+
+    adminNotify(title, options);
+
+}
+
+
+/*==================================================
                 ADMIN CHECK
 ==================================================*/
 
@@ -25,7 +70,13 @@ function protectAdminPage() {
 
     if (!currentUser) {
 
-        alert("Please login first.");
+        adminFlash("Sign in to reach the dashboard", {
+
+            detail: "The admin area needs an account.",
+
+            type: "info"
+
+        });
 
         window.location.href = "login.html";
 
@@ -44,7 +95,13 @@ function protectAdminPage() {
 
     if (currentUser.email !== "admin@shopzone.com") {
 
-        alert("Access denied.");
+        adminFlash("That account is not an administrator", {
+
+            detail: "You have been returned to the store.",
+
+            type: "error"
+
+        });
 
         window.location.href = "index.html";
 
@@ -284,7 +341,13 @@ if (settingsForm) {
 
         event.preventDefault();
 
-        alert("Settings saved successfully.");
+        adminNotify("Settings saved", {
+
+            detail: "Store details have been updated.",
+
+            type: "success"
+
+        });
 
     });
 
@@ -318,11 +381,13 @@ if (addProductBtn) {
 
     addProductBtn.addEventListener("click", () => {
 
-        alert(
+        adminNotify("Product management is not enabled", {
 
-            "Product management can be expanded in a future version."
+            detail: "The catalogue is read-only in this demo build.",
 
-        );
+            type: "info"
+
+        });
 
     });
 
